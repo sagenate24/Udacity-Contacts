@@ -1,6 +1,7 @@
 //Controlled Components allow you to update your UI based on the form itself.
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ListContacts extends Component {
   static propTypes = {
@@ -25,7 +26,6 @@ class ListContacts extends Component {
   render() {
     const { query } = this.state
     const { contacts, onRemoveContact } = this.props
-
     //filters out contacts based on what the query is.
     const showingContacts = query === ''
      ? contacts 
@@ -44,6 +44,10 @@ class ListContacts extends Component {
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
+          <Link
+            to='/create'
+            className='add-contact'
+          >Add Contact</Link>
         </div>
 
       {showingContacts.length !== contacts.length && (
